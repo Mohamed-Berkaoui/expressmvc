@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('./parts/navbar.ejs') %>
+
+
+    <div class="post">
+        <h2>user:  <%= pub.user %></h2>
+        <h4>post : <%= pub.pub %></h4>
+    </div>
+
+    <div class="comments">
+        <% pubComments.forEach(element => { %>
+         <div class="comment">
+            <h4>user: <%= element.user %></h4>
+            <p>comment :  <%= element.comment %></p>
+         </div>
+        <% }) %>
+    </div>
+    <form class="addpostform" action="/addcomment/<%= pub._id %>"method ="post">
+        <label for="">user</label>
+        <input type="text" name="user" >
+        <br>
+        <label for="">Post</label>
+        <input type="text" name="comment">
+        <br>
+        <input type="submit" value="send">
+    </form>
+    
+</body>
+</html>
